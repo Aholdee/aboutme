@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Image Gallery</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: linear-gradient(to bottom, black, purple);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            color: white;
+        }
+        .gallery {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 10px;
+            margin-bottom: 20px;
+        }
+        .image-container {
+            background-color: #fff;
+            border: 2px solid #ccc;
+            border-radius: 5px;
+            overflow: hidden;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+        .image-container img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+        #clock {
+            font-size: 24px;
+            color: #fff;
+            margin-bottom: 5px;
+        }
+        #local-time {
+            font-size: 18px;
+        }
+    </style>
+</head>
+<body>
+    <div class="gallery">
+        <div class="image-container">
+            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRWZ4UXGPwVjDmwf4Oe1gQ9KJcsfDKVleFCwQ&s" alt="Image 1">
+        </div>
+        <div class="image-container">
+            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRE4k-Fs61iGICQaMQfWqDU6w0DqfIMttfxGQ&s" alt="Image 2">
+        </div>
+        <div class="image-container">
+            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRudSyQoyZuH1b7KmFd5JlDKY1TONUhyFPUfA&s" alt="Image 3">
+        </div>
+        <div class="image-container">
+            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR5RVb-zWNIqaIVZnn9MDLAw4Aqqf8A8wPNVw&s" alt="Image 4">
+        </div>
+    </div>
+    <div id="clock"></div>
+    <div id="local-time">Local Time</div>
+
+    <script>
+        function updateClock() {
+            const options = { timeZone: 'America/Chicago', hour: '2-digit', minute: '2-digit', second: '2-digit' };
+            const time = new Intl.DateTimeFormat('en-US', options).format(new Date());
+            document.getElementById('clock').textContent = time;
+        }
+        setInterval(updateClock, 1000);
+        updateClock(); // Initial call to display the time immediately
+    </script>
+</body>
+</html>
