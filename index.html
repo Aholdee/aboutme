@@ -15,6 +15,8 @@
             height: 100vh;
             margin: 0;
             color: white;
+            overflow: hidden;
+            position: relative;
         }
         .gallery {
             display: grid;
@@ -41,6 +43,28 @@
         }
         #local-time {
             font-size: 18px;
+        }
+        /* Bubble Effect */
+        .bubble {
+            position: absolute;
+            bottom: -100px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.5);
+            animation: rise 10s infinite;
+        }
+
+        @keyframes rise {
+            0% {
+                bottom: -100px;
+                transform: scale(0);
+            }
+            50% {
+                transform: scale(1);
+            }
+            100% {
+                bottom: 100vh;
+                transform: scale(0);
+            }
         }
     </style>
 </head>
@@ -70,6 +94,19 @@
         }
         setInterval(updateClock, 1000);
         updateClock(); // Initial call to display the time immediately
+
+        // Create bubbles
+        const bubbleCount = 10; // Adjust the number of bubbles
+        for (let i = 0; i < bubbleCount; i++) {
+            const bubble = document.createElement('div');
+            bubble.className = 'bubble';
+            const size = Math.random() * 50 + 10; // Random size
+            bubble.style.width = size + 'px';
+            bubble.style.height = size + 'px';
+            bubble.style.left = Math.random() * 100 + 'vw'; // Random horizontal position
+            bubble.style.animationDuration = Math.random() * 5 + 5 + 's'; // Random duration
+            document.body.appendChild(bubble);
+        }
     </script>
 </body>
 </html>
