@@ -21,6 +21,7 @@
         .gallery {
             display: flex;
             justify-content: center;
+            align-items: center;
             margin-bottom: 20px;
         }
         .image-container {
@@ -35,6 +36,22 @@
             height: auto;
             display: block;
         }
+        .text-container {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            margin-left: 20px;
+        }
+        .text-container h2 {
+            margin: 0;
+            color: white;
+            font-size: 24px;
+        }
+        .example-text {
+            margin: 0;
+            color: white;
+            font-size: 18px;
+        }
         #clock {
             font-size: 24px;
             color: #fff;
@@ -43,7 +60,6 @@
         #local-time {
             font-size: 18px;
         }
-        /* Bubble Effect */
         .bubble {
             position: absolute;
             bottom: -100px;
@@ -51,7 +67,6 @@
             background: rgba(255, 255, 255, 0.5);
             animation: rise 10s infinite;
         }
-
         @keyframes rise {
             0% {
                 bottom: -100px;
@@ -72,6 +87,11 @@
         <div class="image-container">
             <img src="https://preview.redd.it/xipkllphuyt51.png?auto=webp&s=c38cd6a3908142480493c9bed3cc3f98996d74fe" alt="Single Image">
         </div>
+        <div class="text-container">
+            <h2>What have I been up to?</h2>
+            <p class="example-text">mostly just lots of lethal company and ive been reading jojolion</p>
+            <iframe style="border-radius:12px" src="https://open.spotify.com/embed/track/6M1dXA6Qv1N1imfT17qRZ7?utm_source=generator" width="100%" height="352" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
+        </div>
     </div>
     <div id="clock"></div>
     <div id="local-time">Local Time</div>
@@ -85,18 +105,18 @@
         setInterval(updateClock, 1000);
         updateClock(); // Initial call to display the time immediately
 
-        // Create bubbles
-        const bubbleCount = 15; // Adjust the number of bubbles
+        const bubbleCount = 15;
         for (let i = 0; i < bubbleCount; i++) {
             const bubble = document.createElement('div');
             bubble.className = 'bubble';
-            const size = Math.random() * 50 + 10; // Random size
+            const size = Math.random() * 50 + 10;
             bubble.style.width = size + 'px';
             bubble.style.height = size + 'px';
-            bubble.style.left = Math.random() * 100 + 'vw'; // Random horizontal position
-            bubble.style.animationDuration = Math.random() * 5 + 5 + 's'; // Random duration
+            bubble.style.left = Math.random() * 100 + 'vw';
+            bubble.style.animationDuration = Math.random() * 5 + 5 + 's';
             document.body.appendChild(bubble);
         }
     </script>
 </body>
 </html>
+
